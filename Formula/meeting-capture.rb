@@ -25,7 +25,7 @@ class MeetingCapture < Formula
       set -e
       VENV="${MEETING_CAPTURE_VENV:-$HOME/.meeting-capture/venv}"
       STAMP="$VENV/.formula-version"
-      PY="#{Formula["python@3.12"].opt_bin}/python3.12"
+      PY="#{formula_opt_bin("python@3.12")}/python3.12"
       if ! "$VENV/bin/python" -c "" 2>/dev/null || [ "$(cat "$STAMP" 2>/dev/null)" != "#{version}" ]; then
         echo "meeting-capture: setting up environment (first run / upgrade)..." >&2
         rm -rf "$VENV"
