@@ -3,6 +3,7 @@ class MeetingCapture < Formula
   homepage "https://github.com/stirredo/meeting-capture"
   url "https://github.com/stirredo/meeting-capture/archive/refs/tags/v0.2.0.tar.gz"
   sha256 "61164f5447b4d5cfef70ce8d5abc5f4699297cf0c27375abe7ab53addee3b781"
+  license "Apache-2.0"
 
   depends_on :macos
   depends_on "python@3.12"
