@@ -1,8 +1,8 @@
 class MeetingCapture < Formula
   desc "Always-on two-channel (me/them) meeting transcription daemon for macOS"
   homepage "https://github.com/contorch/meeting-capture"
-  url "https://github.com/contorch/meeting-capture/archive/refs/tags/v0.2.0.tar.gz"
-  sha256 "03c3afb798c3bb6f634bc6c035f33fe07a5080579f9043d3227769f6f70d886f"
+  url "https://github.com/contorch/meeting-capture/archive/refs/tags/v0.2.1.tar.gz"
+  sha256 "b0512042460b7ba0b948407a7ba48a713b848b972cd5575510a85c387d977c02"
   license "Apache-2.0"
 
   depends_on :macos
