@@ -15,6 +15,10 @@ class MeetingCapture < Formula
       system "swift", "build", "-c", "release", "--disable-sandbox"
       bin.install ".build/release/sysaudio"
     end
+    # Re-sign so the signing identifier comes from the embedded Info.plist
+    # (com.contorch.meeting-capture.sysaudio) — that identifier is what TCC
+    # grants attach to, not the linker default "sysaudio".
+    system "codesign", "--sign", "-", "--force", bin/"sysaudio"
 
     # Python sources only; installed into a per-user venv on first run so
     # dependencies arrive as prebuilt wheels (no compilers) and the daemon's
