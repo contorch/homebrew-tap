@@ -1,24 +1,28 @@
 class MeetingCapture < Formula
   desc "Always-on two-channel (me/them) meeting transcription daemon for macOS"
   homepage "https://github.com/contorch/meeting-capture"
-  url "https://github.com/contorch/meeting-capture/archive/refs/tags/v0.2.1.tar.gz"
-  sha256 "b0512042460b7ba0b948407a7ba48a713b848b972cd5575510a85c387d977c02"
+  url "https://github.com/contorch/meeting-capture/archive/refs/tags/v0.2.2.tar.gz"
+  sha256 "f68557b83673bd278ad37e2b82ad77851ff7d6e58edbfb8abd6120f620c42b98"
   license "Apache-2.0"
 
   depends_on :macos
   depends_on "python@3.12"
 
+  # Prebuilt, Developer ID-signed universal binary from the release — no Xcode
+  # needed to install, and the stable signature means macOS permission grants
+  # survive upgrades (an ad-hoc local build would break them every version).
+  resource "sysaudio-prebuilt" do
+    url "https://github.com/contorch/meeting-capture/releases/download/v0.2.2/sysaudio-universal-macos.tar.gz"
+    sha256 "0e0607aadfc89bef1dfb546bd4382c6088d544a4ff9edacd10fabf8c80b9b270"
+  end
+
   def install
-    # sysaudio: the ScreenCaptureKit capture binary. It is also the TCC
-    # identity — Screen Recording and Microphone grants attach to it.
-    cd "swift" do
-      system "swift", "build", "-c", "release", "--disable-sandbox"
-      bin.install ".build/release/sysaudio"
+    # sysaudio: the ScreenCaptureKit capture binary and the TCC identity —
+    # Screen Recording and Microphone grants attach to it. Installed prebuilt;
+    # do NOT re-sign (that would replace the Developer ID signature).
+    resource("sysaudio-prebuilt").stage do
+      bin.install "sysaudio"
     end
-    # Re-sign so the signing identifier comes from the embedded Info.plist
-    # (com.contorch.meeting-capture.sysaudio) — that identifier is what TCC
-    # grants attach to, not the linker default "sysaudio".
-    system "codesign", "--sign", "-", "--force", bin/"sysaudio"
 
     # Python sources only; installed into a per-user venv on first run so
     # dependencies arrive as prebuilt wheels (no compilers) and the daemon's
@@ -55,8 +59,8 @@ class MeetingCapture < Formula
          sure it is enabled under "System Audio Recording Only" as well).
          The first recording session pops a Microphone prompt for
          "sysaudio" — click Allow to get own-voice ("Me:") transcription.
-         NOTE: re-add sysaudio after every upgrade for now (the ad-hoc
-         code signature changes per build).
+         Grants persist across upgrades — the binary carries a stable
+         Developer ID signature.
 
       2. Gemini API key — export GOOGLE_API_KEY (or GEMINI_API_KEY), or
          write the key to ~/.config/google/key (chmod 600).
