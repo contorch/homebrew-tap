@@ -1,5 +1,5 @@
 class MeetingCaptureBeta < Formula
-  desc "meeting-capture BETA — live mode + in-meeting copilot (preview channel)"
+  desc "Meeting-capture BETA — live mode + in-meeting copilot (preview channel)"
   homepage "https://github.com/contorch/meeting-capture"
   url "https://github.com/contorch/meeting-capture/archive/refs/tags/v0.3.0-beta.1.tar.gz"
   sha256 "11c3dfb864ddd96f1d14df382b0eddee30d203d87b0eee34405f75558d8dd4b2"
