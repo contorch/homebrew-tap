@@ -1,8 +1,8 @@
 class MeetingCapture < Formula
   desc "Always-on two-channel (me/them) meeting transcription daemon for macOS"
   homepage "https://github.com/contorch/meeting-capture"
-  url "https://github.com/contorch/meeting-capture/archive/refs/tags/v0.2.2.tar.gz"
-  sha256 "f68557b83673bd278ad37e2b82ad77851ff7d6e58edbfb8abd6120f620c42b98"
+  url "https://github.com/contorch/meeting-capture/archive/refs/tags/v0.3.0.tar.gz"
+  sha256 "cbe9c366e91e9dc44b99005791c7f930ce0a44fe661540070d221003af135b06"
   license "Apache-2.0"
 
   depends_on :macos
@@ -12,8 +12,8 @@ class MeetingCapture < Formula
   # needed to install, and the stable signature means macOS permission grants
   # survive upgrades (an ad-hoc local build would break them every version).
   resource "sysaudio-prebuilt" do
-    url "https://github.com/contorch/meeting-capture/releases/download/v0.2.2/sysaudio-universal-macos.tar.gz"
-    sha256 "0e0607aadfc89bef1dfb546bd4382c6088d544a4ff9edacd10fabf8c80b9b270"
+    url "https://github.com/contorch/meeting-capture/releases/download/v0.3.0/sysaudio-universal-macos.tar.gz"
+    sha256 "89ef6e67b4c95daa1e6af10a0ef78bb761f221540553feead100b1e791653d9d"
   end
 
   def install
@@ -71,6 +71,10 @@ class MeetingCapture < Formula
            meeting-capture doctor     # verify the whole pipeline
 
       Transcripts land in ~/transcripts/ as Markdown.
+
+      Tip: `brew uninstall` can autoremove shared deps (python@3.x) that
+      other contorch tools link. Set HOMEBREW_NO_AUTOREMOVE=1 if you also
+      run pipeline-monitor / context-orchestrator from Homebrew.
     EOS
   end
 
