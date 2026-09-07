@@ -1,8 +1,8 @@
 class MeetingCaptureBeta < Formula
   desc "Meeting-capture BETA — live mode + in-meeting copilot (preview channel)"
   homepage "https://github.com/contorch/meeting-capture"
-  url "https://github.com/contorch/meeting-capture/archive/refs/tags/v0.3.0-beta.1.tar.gz"
-  sha256 "11c3dfb864ddd96f1d14df382b0eddee30d203d87b0eee34405f75558d8dd4b2"
+  url "https://github.com/contorch/meeting-capture/archive/refs/tags/v0.3.0.tar.gz"
+  sha256 "cbe9c366e91e9dc44b99005791c7f930ce0a44fe661540070d221003af135b06"
   license "Apache-2.0"
 
   depends_on :macos
@@ -17,8 +17,8 @@ class MeetingCaptureBeta < Formula
   # needed to install, and the stable signature means macOS permission grants
   # survive upgrades (an ad-hoc local build would break them every version).
   resource "sysaudio-prebuilt" do
-    url "https://github.com/contorch/meeting-capture/releases/download/v0.3.0-beta.1/sysaudio-universal-macos.tar.gz"
-    sha256 "0e0607aadfc89bef1dfb546bd4382c6088d544a4ff9edacd10fabf8c80b9b270"
+    url "https://github.com/contorch/meeting-capture/releases/download/v0.3.0/sysaudio-universal-macos.tar.gz"
+    sha256 "89ef6e67b4c95daa1e6af10a0ef78bb761f221540553feead100b1e791653d9d"
   end
 
   def install
