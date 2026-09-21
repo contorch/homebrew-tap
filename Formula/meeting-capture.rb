@@ -1,8 +1,8 @@
 class MeetingCapture < Formula
   desc "Always-on two-channel (me/them) meeting transcription daemon for macOS"
   homepage "https://github.com/contorch/meeting-capture"
-  url "https://github.com/contorch/meeting-capture/archive/refs/tags/v0.3.0.tar.gz"
-  sha256 "cbe9c366e91e9dc44b99005791c7f930ce0a44fe661540070d221003af135b06"
+  url "https://github.com/contorch/meeting-capture/archive/refs/tags/v0.3.1.tar.gz"
+  sha256 "fdb3087ce3a57e1b43b143a04f0ee9b9090dcd3c86dc8a144df13c12ed5d6a1a"
   license "Apache-2.0"
 
   depends_on :macos
@@ -12,8 +12,8 @@ class MeetingCapture < Formula
   # needed to install, and the stable signature means macOS permission grants
   # survive upgrades (an ad-hoc local build would break them every version).
   resource "sysaudio-prebuilt" do
-    url "https://github.com/contorch/meeting-capture/releases/download/v0.3.0/sysaudio-universal-macos.tar.gz"
-    sha256 "89ef6e67b4c95daa1e6af10a0ef78bb761f221540553feead100b1e791653d9d"
+    url "https://github.com/contorch/meeting-capture/releases/download/v0.3.1/sysaudio-universal-macos.tar.gz"
+    sha256 "e3e9ee54ffc63ded4bd7ec470109655614a3c1e74c3c57d79823f5bb90aa928f"
   end
 
   def install
