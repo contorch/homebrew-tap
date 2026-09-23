@@ -1,8 +1,8 @@
 class Contorch < Formula
   desc "Open-source memory layer for coding agents — meeting capture + search + menu bar"
   homepage "https://contorch.com"
-  url "https://github.com/contorch/pipeline-monitor/archive/refs/tags/v0.2.1.tar.gz"
-  sha256 "68978949b5f1893a55deaad8321617b7f2bda4394f54f8a6d0d92cd6a4ab31d4"
+  url "https://github.com/contorch/pipeline-monitor/archive/refs/tags/v0.2.2.tar.gz"
+  sha256 "010524ff3a2c7baafc20a8413b6a60ad39e1a0bf0c81ebce7c7d77b91324fcd6"
   license "Apache-2.0"
 
   depends_on :macos
