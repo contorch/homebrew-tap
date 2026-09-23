@@ -1,10 +1,9 @@
 class ContextOrchestrator < Formula
   desc "contorch memory layer: MCP server, chroma search index, transcript indexer"
   homepage "https://github.com/contorch/context-orchestrator"
-  url "https://github.com/contorch/context-orchestrator/archive/refs/tags/v0.2.0.tar.gz"
-  sha256 "054c4b1e1c75e712d39d0745796a6984141820a7260eebc64745fb0a915a2aad"
+  url "https://github.com/contorch/context-orchestrator/archive/refs/tags/v0.2.1.tar.gz"
+  sha256 "1203aa09872f986b5d03a24b9d69f12ca235bab2742c982aca4f1a35a79d74ed"
   license "Apache-2.0"
-  revision 1
 
   depends_on :macos
   depends_on "python@3.12"
