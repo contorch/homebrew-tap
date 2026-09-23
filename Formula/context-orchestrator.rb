@@ -4,6 +4,7 @@ class ContextOrchestrator < Formula
   url "https://github.com/contorch/context-orchestrator/archive/refs/tags/v0.2.0.tar.gz"
   sha256 "054c4b1e1c75e712d39d0745796a6984141820a7260eebc64745fb0a915a2aad"
   license "Apache-2.0"
+  revision 1
 
   depends_on :macos
   depends_on "python@3.12"
@@ -33,7 +34,7 @@ class ContextOrchestrator < Formula
         rm -rf "$VENV.old"; [ -d "$VENV" ] && mv "$VENV" "$VENV.old"
         mv "$VENV.new" "$VENV"
         # venv scripts hard-code the build path in their shebangs — rewrite.
-        grep -rl "$VENV.new" "$VENV/bin" 2>/dev/null | xargs sed -i '' "s#$VENV.new#$VENV#g"
+        grep -rl "$VENV.new" "$VENV/bin" 2>/dev/null | xargs sed -i '' "s|$VENV.new|$VENV|g"
         rm -rf "$VENV.old"
       fi
       name="$1"; shift
