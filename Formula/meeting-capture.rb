@@ -1,8 +1,8 @@
 class MeetingCapture < Formula
   desc "Always-on two-channel (me/them) meeting transcription daemon for macOS"
   homepage "https://github.com/contorch/meeting-capture"
-  url "https://github.com/contorch/meeting-capture/archive/refs/tags/v0.3.1.tar.gz"
-  sha256 "fdb3087ce3a57e1b43b143a04f0ee9b9090dcd3c86dc8a144df13c12ed5d6a1a"
+  url "https://github.com/contorch/meeting-capture/archive/refs/tags/v0.4.0.tar.gz"
+  sha256 "6af3f3abc37981bc7e27490b4c2a2302d8a6583175530e81e4232aadddb79c32"
   license "Apache-2.0"
 
   depends_on :macos
@@ -12,8 +12,8 @@ class MeetingCapture < Formula
   # needed to install, and the stable signature means macOS permission grants
   # survive upgrades (an ad-hoc local build would break them every version).
   resource "sysaudio-prebuilt" do
-    url "https://github.com/contorch/meeting-capture/releases/download/v0.3.1/sysaudio-universal-macos.tar.gz"
-    sha256 "e3e9ee54ffc63ded4bd7ec470109655614a3c1e74c3c57d79823f5bb90aa928f"
+    url "https://github.com/contorch/meeting-capture/releases/download/v0.4.0/sysaudio-universal-macos.tar.gz"
+    sha256 "ef0dca9b0899370c149a4a16966032b7f7419256bd54f7bbb1a81aa1d64a401b"
   end
 
   def install
@@ -40,7 +40,7 @@ class MeetingCapture < Formula
         rm -rf "$VENV"
         "$PY" -m venv "$VENV"
         "$VENV/bin/pip" -q install --upgrade pip
-        "$VENV/bin/pip" -q install "#{libexec}"
+        "$VENV/bin/pip" -q install "#{libexec}[linein]"
         echo "#{version}" > "$STAMP"
       fi
       export MEETING_CAPTURE_SYSAUDIO="${MEETING_CAPTURE_SYSAUDIO:-#{opt_bin}/sysaudio}"
