@@ -1,8 +1,8 @@
 class ContextOrchestrator < Formula
   desc "contorch memory layer: MCP server, chroma search index, transcript indexer"
   homepage "https://github.com/contorch/context-orchestrator"
-  url "https://github.com/contorch/context-orchestrator/archive/refs/tags/v0.3.0.tar.gz"
-  sha256 "54150e8097389d2f7da5bd96f93f426db0b282352f4f29bab60112f0c55db239"
+  url "https://github.com/contorch/context-orchestrator/archive/refs/tags/v0.4.0.tar.gz"
+  sha256 "d5f3e67e90aae7e275bd0ddbc1ab50e8b1fd52b61d6f226d33cc79df242d827b"
   license "Apache-2.0"
 
   depends_on :macos
@@ -41,7 +41,8 @@ class ContextOrchestrator < Formula
     SH
     chmod 0755, libexec/"venv-exec"
 
-    %w[contorch-mcp context-orchestrator-chroma transcript-watcher save-transcript].each do |cmd|
+    %w[contorch-mcp context-orchestrator-chroma transcript-watcher save-transcript
+       contorch-transcripts contorch-memory].each do |cmd|
       (bin/cmd).write <<~SH
         #!/bin/bash
         exec "#{opt_libexec}/venv-exec" #{cmd} "$@"

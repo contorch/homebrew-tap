@@ -1,8 +1,8 @@
 class MeetingCapture < Formula
   desc "Always-on two-channel (me/them) meeting transcription daemon for macOS"
   homepage "https://github.com/contorch/meeting-capture"
-  url "https://github.com/contorch/meeting-capture/archive/refs/tags/v0.4.0.tar.gz"
-  sha256 "6af3f3abc37981bc7e27490b4c2a2302d8a6583175530e81e4232aadddb79c32"
+  url "https://github.com/contorch/meeting-capture/archive/refs/tags/v0.5.0.tar.gz"
+  sha256 "72127464a5e7dbda01a1309df39d257d3fc3dd1e6c9b9b5a37d51972c170babb"
   license "Apache-2.0"
 
   depends_on :macos
@@ -12,8 +12,8 @@ class MeetingCapture < Formula
   # needed to install, and the stable signature means macOS permission grants
   # survive upgrades (an ad-hoc local build would break them every version).
   resource "sysaudio-prebuilt" do
-    url "https://github.com/contorch/meeting-capture/releases/download/v0.4.0/sysaudio-universal-macos.tar.gz"
-    sha256 "ef0dca9b0899370c149a4a16966032b7f7419256bd54f7bbb1a81aa1d64a401b"
+    url "https://github.com/contorch/meeting-capture/releases/download/v0.5.0/sysaudio-universal-macos.tar.gz"
+    sha256 "e9421828501aa24f42f58fa00ea4082ca536d28b172ac6cfbdfebe582e98c1e6"
   end
 
   def install
@@ -70,7 +70,9 @@ class MeetingCapture < Formula
            meeting-capture install    # auto-start at login (launchd)
            meeting-capture doctor     # verify the whole pipeline
 
-      Transcripts land in ~/transcripts/ as Markdown.
+      Transcripts are stored in ~/.context-orchestrator/context.db and are
+      searchable from Claude Code (context-orchestrator). Settings, including a
+      USB audio interface as the source: meeting-capture ui
 
       Tip: `brew uninstall` can autoremove shared deps (python@3.x) that
       other contorch tools link. Set HOMEBREW_NO_AUTOREMOVE=1 if you also
