@@ -1,8 +1,8 @@
 class MeetingCapture < Formula
   desc "Always-on two-channel (me/them) meeting transcription daemon for macOS"
   homepage "https://github.com/contorch/meeting-capture"
-  url "https://github.com/contorch/meeting-capture/archive/refs/tags/v0.6.0.tar.gz"
-  sha256 "de821ca6161859f40e369d0d58487ddade63aa542736b62c75bb7c8670a66fdd"
+  url "https://github.com/contorch/meeting-capture/archive/refs/tags/v0.7.0.tar.gz"
+  sha256 "579ce249dc9947d4e434258aa0cbc16f77c95b31f06acafb24e2adf9fa52d9a1"
   license "Apache-2.0"
 
   depends_on :macos
@@ -12,8 +12,8 @@ class MeetingCapture < Formula
   # needed to install, and the stable signature means macOS permission grants
   # survive upgrades (an ad-hoc local build would break them every version).
   resource "sysaudio-prebuilt" do
-    url "https://github.com/contorch/meeting-capture/releases/download/v0.6.0/sysaudio-universal-macos.tar.gz"
-    sha256 "6fc6075e9d40877243109bd88cf000c1686d49ae73066677291933827a2834c2"
+    url "https://github.com/contorch/meeting-capture/releases/download/v0.7.0/sysaudio-universal-macos.tar.gz"
+    sha256 "ac00591351dc311925054e25ff51c7602cb446516b1b05aa2776ffbff487d061"
   end
 
   def install
@@ -62,7 +62,10 @@ class MeetingCapture < Formula
          Grants persist across upgrades — the binary carries a stable
          Developer ID signature.
 
-      2. Gemini API key — export GOOGLE_API_KEY (or GEMINI_API_KEY), or
+      2. Transcription — on macOS 26+ with Apple silicon it runs on this
+         Mac (no key, nothing uploaded); `meeting-capture stt` shows the
+         engine and `meeting-capture language` picks the language.
+         Gemini is optional: export GOOGLE_API_KEY (or GEMINI_API_KEY), or
          write the key to ~/.config/google/key (chmod 600).
          Free keys: https://aistudio.google.com/apikey
 

@@ -1,8 +1,8 @@
 class ContextOrchestrator < Formula
-  desc "contorch memory layer: MCP server, chroma search index, transcript indexer"
+  desc "Contorch memory layer: MCP server, chroma search index, transcript indexer"
   homepage "https://github.com/contorch/context-orchestrator"
-  url "https://github.com/contorch/context-orchestrator/archive/refs/tags/v0.4.0.tar.gz"
-  sha256 "d5f3e67e90aae7e275bd0ddbc1ab50e8b1fd52b61d6f226d33cc79df242d827b"
+  url "https://github.com/contorch/context-orchestrator/archive/refs/tags/v0.5.0.tar.gz"
+  sha256 "32bf5ecd9767f81b0f61189a0f3f9799a86a03349774d01406b1a61ce3142da5"
   license "Apache-2.0"
 
   depends_on :macos
@@ -42,7 +42,7 @@ class ContextOrchestrator < Formula
     chmod 0755, libexec/"venv-exec"
 
     %w[contorch-mcp context-orchestrator-chroma transcript-watcher save-transcript
-       contorch-transcripts contorch-memory].each do |cmd|
+       contorch-transcripts contorch-memory contorch-hook].each do |cmd|
       (bin/cmd).write <<~SH
         #!/bin/bash
         exec "#{opt_libexec}/venv-exec" #{cmd} "$@"
@@ -60,6 +60,6 @@ class ContextOrchestrator < Formula
 
   test do
     assert_predicate libexec/"venv-exec", :executable?
-    assert_predicate pkgshare/"claude-md-template.md", :exist?
+    assert_path_exists pkgshare/"claude-md-template.md"
   end
 end

@@ -1,13 +1,13 @@
 class Contorch < Formula
   desc "Open-source memory layer for coding agents — meeting capture + search + menu bar"
   homepage "https://contorch.com"
-  url "https://github.com/contorch/pipeline-monitor/archive/refs/tags/v0.3.0.tar.gz"
-  sha256 "66aec196cc363e3f9fc3a7a283900c2079206d951c7b7237c5bea9ae101c83cc"
+  url "https://github.com/contorch/pipeline-monitor/archive/refs/tags/v0.4.0.tar.gz"
+  sha256 "f0a3a98bbd13ff25c3bfa542b75b407df25e6fc2dbf7b6794975c9fa5e354e29"
   license "Apache-2.0"
 
-  depends_on :macos
   depends_on "contorch/tap/context-orchestrator"
   depends_on "contorch/tap/meeting-capture"
+  depends_on :macos
   depends_on "python@3.12"
 
   def install
@@ -62,6 +62,6 @@ class Contorch < Formula
 
   test do
     assert_predicate bin/"contorch", :executable?
-    assert_predicate libexec/"pyproject.toml", :exist?
+    assert_path_exists libexec/"pyproject.toml"
   end
 end
